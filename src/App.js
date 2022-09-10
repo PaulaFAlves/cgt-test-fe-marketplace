@@ -1,80 +1,36 @@
-import pictureA from './a.jpg';
-import pictureB from './b.jpg';
+import Router from "./router";
+import Context from "./Context";
+import { useReducer } from "react";
+import { productsList } from "./components/products.data";
 
-function cartItems() {
-  return []
-}
+const reducer = (state, action) => {
+  switch (action.type) {
+    case "INCREMENT":
+      return state.map((product) => {
+        if (product.id === action.payload.id) {
+          product.quantity = action.payload.quantity + 1;
+        }
+        return product;
+      });
+    case "DECREMENT":
+      return state.map((product) => {
+        if (product.id === action.payload.id && action.payload.quantity > 0) {
+          product.quantity = action.payload.quantity - 1;
+        }
+        return product;
+      });
+    default:
+      return state;
+  }
+};
 
 function App() {
+  const [count, dispatch] = useReducer(reducer, productsList);
+
   return (
-    <main>
-      <header>
-        90s shop
-        <nav>
-          <ul style={{listStyleType: 'none', display: 'flex'}}>
-            <li><a href="/">Home</a></li>
-            |
-            <li><a href="/cart">Cart ({cartItems().length})</a></li>
-          </ul>
-        </nav>
-        <hr/>
-      </header>
-
-      {
-        window.location.pathname === '/' && (
-          <div>
-            Welcome to our shop!
-
-            <p>
-              You are probably interested in <a href="/products/a">A</a>.
-            </p>
-
-            <p>
-              Check out the newest product <a href="/products/b">B</a>!
-            </p>
-          </div>
-        )
-      }
-      {
-        window.location.pathname === '/products/b' && (
-          <div>
-            <h1>Product B</h1>
-            <p>Price: 30 USD</p>
-
-            <button onClick={() => console.warn('Not implemented!')}>
-              Add to cart
-            </button>
-
-            <div><img src={pictureB} width={640}/></div>
-          </div>
-        )
-      }
-      {
-        window.location.pathname === '/products/a' && (
-          <div>
-            <h1>Product A</h1>
-            <p>Price: 10 USD</p>
-
-            <button onClick={() => console.warn('Not implemented!')}>
-              Add to cart
-            </button>
-
-            <div><img src={pictureA} width={640}/></div>
-          </div>
-        )
-      }
-      {
-        window.location.pathname === '/cart' && (
-          <div>
-            Are you ready to purchase these?
-
-            <ul>
-              {cartItems().map((cartItem) => <li key={cartItem}>{cartItem}</li>)}
-            </ul>
-          </div>
-        )
-      }
-    </main>
+    <Context.Provider value={{ count, dispatch }}>
+      <Router />
+    </Context.Provider>
   );
 }
 
