@@ -3,11 +3,16 @@ import styled from "styled-components";
 export const ProductsWrapper = styled.section`
   display: flex;
   justify-content: center;
+  align-items: center;
   background-color: white;
-  height: 100vh;
-  width: 80%;
-  margin: auto;
   border-radius: 8px;
+  flex-direction: column;
+  height: 100%;
+
+  @media (min-width: 1024px) {
+    height: 100vh;
+    flex-direction: row;
+  }
 `;
 
 export const Product = styled.div`
@@ -16,8 +21,13 @@ export const Product = styled.div`
 `;
 
 export const ImageWrapper = styled.div`
-  width: 400px;
-  height: 400px;
+  width: 300px;
+  height: 300px;
+
+  @media (min-width: 1024px) {
+    width: 400px;
+    height: 400px;
+  }
 `;
 
 export const Image = styled.img`
@@ -37,7 +47,7 @@ export const TextContentWrapper = styled.div`
 
 export const ButtonWrapper = styled.div`
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
 `;
 
 export const Button = styled.button`

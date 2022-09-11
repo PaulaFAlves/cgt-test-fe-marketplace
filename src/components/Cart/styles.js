@@ -3,7 +3,6 @@ import styled from "styled-components";
 export const CartBackground = styled.div`
   height: 100vh;
   background-color: white;
-  width: 80%;
   margin: auto;
   border-radius: 8px;
 `;
@@ -12,16 +11,22 @@ export const List = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 80%;
   margin: auto;
   background-color: white;
   border-radius: 8px;
+
+  @media (min-width: 1024px) {
+    width: 80%;
+  }
 `;
 
 export const ListItem = styled.div`
-  border-bottom: 1px solid black;
-  width: 100%;
   padding: 12px;
+
+  @media (min-width: 1024px) {
+    width: 100%;
+    border-bottom: 1px solid black;
+  }
 `;
 
 export const ButtonWrapper = styled.div`
