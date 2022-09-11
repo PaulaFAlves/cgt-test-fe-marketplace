@@ -1,5 +1,6 @@
-import React from "react";
-import { productsList } from "./products.data";
+import React, { useContext } from "react";
+import Context from "../../Context";
+import { productsList } from "../products.data";
 
 import {
   ImageWrapper,
@@ -9,16 +10,16 @@ import {
   TextContentWrapper,
   ButtonWrapper,
   Button,
+  Quantity,
 } from "./styles";
 
 const Products = () => {
-  const sendToCart = () => {
-    // TODO: implement
-  };
+  const countContext = useContext(Context);
+  const { dispatch } = countContext;
 
   return (
     <ProductsWrapper data-testid="products">
-      {productsList.map(({ image, name, price, id }) => (
+      {productsList.map(({ image, name, price, id, quantity }) => (
         <Product key={`product-${id}`}>
           <ImageWrapper>
             <Image src={image} />
@@ -30,8 +31,27 @@ const Products = () => {
             <p>Price: U${price}</p>
           </TextContentWrapper>
           <ButtonWrapper>
-            <Button type="submit" onClick={sendToCart}>
-              Buy
+            <Button
+              onClick={() =>
+                dispatch({
+                  type: "INCREMENT",
+                  payload: { id, name, price, quantity },
+                })
+              }
+            >
+              +
+            </Button>
+            <Quantity>{quantity}</Quantity>
+            <Button
+              onClick={() =>
+                dispatch({
+                  type: "DECREMENT",
+                  payload: { id, name, price, quantity },
+                })
+              }
+              remove
+            >
+              -
             </Button>
           </ButtonWrapper>
         </Product>
