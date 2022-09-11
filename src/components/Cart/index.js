@@ -9,6 +9,7 @@ import {
   ButtonWrapper,
   Quantity,
   TotalWrapper,
+  CartBackground,
 } from "./styles";
 
 const Cart = () => {
@@ -26,7 +27,7 @@ const Cart = () => {
   }, [count, itemsOnCart]);
 
   return (
-    <div>
+    <CartBackground data-testid="cart">
       <header>
         <List>
           <ListItem>Id</ListItem>
@@ -41,45 +42,45 @@ const Cart = () => {
         <EmptyState />
       ) : (
         itemsOnCart.map(({ id, name, price, quantity }) => (
-          <>
-            <List>
-              <ListItem>{id}</ListItem>
-              <ListItem>{name}</ListItem>
-              <ListItem>{price}</ListItem>
-              <ListItem>{quantity}</ListItem>
-              <ListItem>{quantity * price}</ListItem>
-              <ListItem>
-                <ButtonWrapper>
-                  <Button
-                    onClick={() =>
-                      dispatch({
-                        type: "INCREMENT",
-                        payload: { id, name, price, quantity },
-                      })
-                    }
-                  >
-                    +
-                  </Button>
-                  <Quantity>{quantity}</Quantity>
-                  <Button
-                    onClick={() =>
-                      dispatch({
-                        type: "DECREMENT",
-                        payload: { id, name, price, quantity },
-                      })
-                    }
-                    remove
-                  >
-                    -
-                  </Button>
-                </ButtonWrapper>
-              </ListItem>
-            </List>
-            <TotalWrapper>Total: U${total}</TotalWrapper>
-          </>
+          <List key={id}>
+            <ListItem>{id}</ListItem>
+            <ListItem>{name}</ListItem>
+            <ListItem>{price}</ListItem>
+            <ListItem>{quantity}</ListItem>
+            <ListItem>{quantity * price}</ListItem>
+            <ListItem>
+              <ButtonWrapper>
+                <Button
+                  onClick={() =>
+                    dispatch({
+                      type: "INCREMENT",
+                      payload: { id, name, price, quantity },
+                    })
+                  }
+                >
+                  +
+                </Button>
+                <Quantity>{quantity}</Quantity>
+                <Button
+                  onClick={() =>
+                    dispatch({
+                      type: "DECREMENT",
+                      payload: { id, name, price, quantity },
+                    })
+                  }
+                  remove
+                >
+                  -
+                </Button>
+              </ButtonWrapper>
+            </ListItem>
+          </List>
         ))
       )}
-    </div>
+      {itemsOnCart.length > 0 && (
+        <TotalWrapper data-testid="cart-total">Total: U${total}</TotalWrapper>
+      )}
+    </CartBackground>
   );
 };
 

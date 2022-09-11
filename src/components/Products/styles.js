@@ -3,17 +3,16 @@ import styled from "styled-components";
 export const ProductsWrapper = styled.section`
   display: flex;
   justify-content: center;
+  background-color: white;
+  height: 100vh;
+  width: 80%;
+  margin: auto;
+  border-radius: 8px;
 `;
 
 export const Product = styled.div`
   margin: 20px;
   padding: 10px;
-
-  /* :hover {
-    border-radius: 8px;
-    box-shadow: 1px 1px 8px #888888;
-    transition: width 1s;
-  } */
 `;
 
 export const ImageWrapper = styled.div`

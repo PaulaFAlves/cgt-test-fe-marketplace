@@ -1,35 +1,32 @@
 import styled from "styled-components";
 
 export const TextWrapper = styled.div`
-  width: 80%;
-  margin: 48px auto;
+  width: 100%;
+  height: 100vh;
+  background-image: url("/assets/a.jpg");
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const Text = styled.h1`
   text-align: center;
+  color: #f5fffa;
+  letter-spacing: 2px;
 `;
 
 export const Subtitle = styled.h2`
   text-align: center;
+  color: #f5fffa;
 `;
 
 export const Link = styled.a`
   text-decoration: none;
-  color: black;
+  color: #f5fffa;
 
   :hover {
-    color: red;
+    color: #dcdcdc;
   }
-`;
-
-export const ImageWrapper = styled.div`
-  width: 400px;
-  height: 400px;
-`;
-
-export const Image = styled.img`
-  width: 100%;
-  height: 100%;
-  border-radius: 8px;
-  object-fit: cover;
 `;

@@ -32,6 +32,7 @@ const Products = () => {
           </TextContentWrapper>
           <ButtonWrapper>
             <Button
+              data-testid="increment-button"
               onClick={() =>
                 dispatch({
                   type: "INCREMENT",
@@ -43,6 +44,7 @@ const Products = () => {
             </Button>
             <Quantity>{quantity}</Quantity>
             <Button
+              data-testid="decrement-button"
               onClick={() =>
                 dispatch({
                   type: "DECREMENT",

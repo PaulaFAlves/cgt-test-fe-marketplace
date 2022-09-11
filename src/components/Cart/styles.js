@@ -1,11 +1,21 @@
 import styled from "styled-components";
 
+export const CartBackground = styled.div`
+  height: 100vh;
+  background-color: white;
+  width: 80%;
+  margin: auto;
+  border-radius: 8px;
+`;
+
 export const List = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 80%;
   margin: auto;
+  background-color: white;
+  border-radius: 8px;
 `;
 
 export const ListItem = styled.div`

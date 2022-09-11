@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import Context from "../../Context";
 import { Outlet, Link } from "react-router-dom";
 
-import { List } from "./styles";
+import { List, Content } from "./styles";
 import Badge from "../Badge";
 
 const Layout = () => {
@@ -22,7 +22,7 @@ const Layout = () => {
   }, [count]);
 
   return (
-    <>
+    <Content>
       <nav>
         <List>
           <li>
@@ -40,7 +40,7 @@ const Layout = () => {
       </nav>
 
       <Outlet />
-    </>
+    </Content>
   );
 };
 

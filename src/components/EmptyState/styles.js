@@ -7,5 +7,5 @@ export const EmptyStateWrapper = styled.div`
 
 export const Link = styled.a`
   text-decoration: none;
-  color: red;
+  color: #696969;
 `;
